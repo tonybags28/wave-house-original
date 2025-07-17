@@ -4,15 +4,11 @@ set -e
 echo "=== Installing Python dependencies ==="
 pip install -r requirements.txt
 
-echo "=== Building React frontend ==="
-cd frontend
-npm install
-npm run build
+echo "=== Installing Node.js dependencies ==="
+npm install --prefix frontend
 
-echo "=== Copying built files to static directory ==="
-cd ..
-mkdir -p static
-cp -r frontend/dist/* static/
+echo "=== Building React production app ==="
+npm run build --prefix frontend
 
 echo "=== Build completed successfully ==="
 
